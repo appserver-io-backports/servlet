@@ -22,6 +22,8 @@
 
 namespace TechDivision\Servlet\Http;
 
+use TechDivision\Servlet\ServletResponse;
+
 /**
  * A Http servlet response implementation.
  *
@@ -33,7 +35,7 @@ namespace TechDivision\Servlet\Http;
  * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link       http://www.appserver.io
  */
-interface HttpServletResponse extends HttpServletResponse
+interface HttpServletResponse extends ServletResponse
 {
 
     /**
