@@ -65,33 +65,11 @@ interface ServletRequest
 {
     
     /**
-     * Returns the application context name (application name) for the acutal request.
-     * 
-     * @return string The application context name
-     */
-    public function getContextPath();
-    
-    /**
-     * Returns the path to the servlet used to handle this request.
-     * 
-     * @return string The relative path to the servlet
-     */
-    public function getServletPath();
-    
-    /**
      * Returns the host name passed with the request header.
      * 
      * @return string The host name of this request
      */
     public function getServerName();
-    
-    /**
-     * Returns the absolute path info started from the context path.
-     * 
-     *  @return string the absolute path info
-     *  @see \TechDivision\Servlet\ServletRequest::getPathInfo()
-     */
-    public function getPathInfo();
 
     /**
      * Returns an array with all request parameters.
@@ -101,27 +79,11 @@ interface ServletRequest
     public function getParameterMap();
 
     /**
-     * Returns header info by given key
-     *
-     * @param string $key The header key to get
-     *
-     * @return string|null
-     */
-    public function getHeader($key);
-
-    /**
      * Returns accepted encodings data
      *
      * @return array
      */
     public function getAcceptedEncodings();
-
-    /**
-     * Returns query string of the actual request.
-     *
-     * @return string|null The query string of the actual request
-     */
-    public function getQueryString();
 
     /**
      * Returns the servers IP v4 address.
@@ -138,32 +100,11 @@ interface ServletRequest
     public function getServerPort();
 
     /**
-     * Returns the array with all headers.
-     *
-     * @return array The headers as array
-     */
-    public function getHeaders();
-
-    /**
      * Return request content. 
      *
      * @return string The request content
      */
     public function getContent();
-
-    /**
-     * Returns request method.
-     *
-     * @return string The request method
-     */
-    public function getMethod();
-
-    /**
-     * Returns request URI.
-     *
-     * @return string The request URI
-     */
-    public function getUri();
 
     /**
      * Returns protocol version, HTTP/1.1 for example.
@@ -212,23 +153,4 @@ interface ServletRequest
      * @return array A collection of HttpPart objects
      */
     public function getParts();
-
-    /**
-     * Returns TRUE if the request has a cookie header with the passed
-     * name, else FALSE.
-     *
-     * @param string $cookieName Name of the cookie header to be checked
-     *
-     * @return boolean TRUE if the request has the cookie, else FALSE
-     */
-    public function hasCookie($cookieName);
-
-    /**
-     * Returns the value of the cookie with the passed name.
-     *
-     * @param string $cookieName The name of the cookie to return
-     *
-     * @return mixed The cookie value
-     */
-    public function getCookie($cookieName);
 }

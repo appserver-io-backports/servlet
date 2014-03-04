@@ -22,6 +22,8 @@
 
 namespace TechDivision\Servlet\Http;
 
+use TechDivision\Servlet\ServletResponseWrapper;
+
 /**
  * A Http servlet response implementation.
  *

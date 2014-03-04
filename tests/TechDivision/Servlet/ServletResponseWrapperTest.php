@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TechDivision\Servlet\ServletRequestWrapperTest
+ * TechDivision\Servlet\ServletResponseWrapperTest
  *
  * NOTICE OF LICENSE
  *
@@ -22,7 +22,7 @@
 namespace TechDivision\Servlet;
 
 /**
- * Test for servlet request wrapper implementation.
+ * Test for servlet response wrapper implementation.
  *
  * @category  Appserver
  * @package   TechDivision_Servlet
@@ -31,29 +31,29 @@ namespace TechDivision\Servlet;
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      http://www.appserver.io
  */
-class ServletRequestWrapperTest extends \PHPUnit_Framework_TestCase
+class ServletResponseWrapperTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Test if the server name is returned correctly.
+     * Test that the accepted encodings are returned correctly.
      *
      * @return void
      */
     public function testGetServerName()
     {
         
-        // create a stub for the ServletRequest interface
-        $stub = $this->getMock('\TechDivision\Servlet\ServletRequest');
+        // create a stub for the ServletResponse interface
+        $stub = $this->getMock('\TechDivision\Servlet\ServletResponse');
         
         // Configure the stub.
         $stub->expects($this->any())
-             ->method('getServerName')
-             ->will($this->returnValue($serverName = '127.0.0.1'));
+             ->method('getAcceptedEncodings')
+             ->will($this->returnValue($acceptedEncodings = array('gzip', 'deflate', 'sdch')));
 
         // create a new wrapper instance
-        $wrapper = new ServletRequestWrapper($stub);
+        $wrapper = new ServletResponseWrapper($stub);
         
-        // check if the context path has been returned
-        $this->assertSame($serverName, $wrapper->getServerName());
+        // check if the accepted encodings has been returned
+        $this->assertSame($acceptedEncodings, $wrapper->getAcceptedEncodings());
     }
 }
