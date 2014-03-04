@@ -1,0 +1,20 @@
+{
+    "name": "techdivision/servlet",
+    "type": "package",
+    "description": "Servlet package default implementation.",
+    "homepage": "https://github.com/techdivision/TechDivision_Servlet",
+    "license": ["OSL-3.0"],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/techdivision/TechDivision_Servlet"
+        }
+    ],
+    "require": {
+        "php" : ">=5.4.0",
+        "techdivision/http": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {"TechDivision": "src/"}
+    }
+}
