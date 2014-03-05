@@ -45,9 +45,9 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
      * 
      * @return void
      */
-    public function __construct(HttpServletResponse $response)
+    public function injectResponse(HttpServletResponse $response)
     {
-        parent::__construct($response);
+        parent::injectResponse($response);
     }
 
     /**

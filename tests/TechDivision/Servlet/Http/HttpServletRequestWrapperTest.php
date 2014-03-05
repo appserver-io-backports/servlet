@@ -53,7 +53,8 @@ class HttpServletRequestWrapperTest extends \PHPUnit_Framework_TestCase
              ->will($this->returnValue($queryString = 'arg1=value1&arg2=value2'));
 
         // create a new wrapper instance
-        $wrapper = new HttpServletRequestWrapper($stub);
+        $wrapper = new HttpServletRequestWrapper();
+        $wrapper->injectRequest($stub);
         
         // check if the query string has been returned
         $this->assertSame($queryString, $wrapper->getQueryString());

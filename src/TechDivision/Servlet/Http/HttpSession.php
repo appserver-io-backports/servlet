@@ -172,46 +172,6 @@ interface HttpSession
     public function shutdownObject();
 
     /**
-     * Automatically expires the session if the user has been inactive for too long.
-     *
-     * @return boolean TRUE if the session expired, FALSE if not
-     */
-    protected function autoExpire();
-
-    /**
-     * Initialize request, response and session cookie
-     *
-     * @return void
-     */
-    protected function initializeHttpAndCookie();
-
-    /**
-     * Writes the cache entry containing information about the session, such as the
-     * last activity time and the storage identifier.
-     *
-     * This function does not write the whole session _data_ into the storage cache,
-     * but only the "head" cache entry containing meta information.
-     *
-     * The session cache entry is also tagged with "session", the session identifier
-     * and any custom tags of this session, prefixed with TAG_PREFIX.
-     *
-     * @return void
-     */
-    protected function writeSessionInfoCacheEntry();
-
-    /**
-     * Removes the session info cache entry for the specified session.
-     *
-     * Note that this function does only remove the "head" cache entry, not the
-     * related data referred to by the storage identifier.
-     *
-     * @param string $sessionIdentifier The sessions's id
-     *
-     * @return void
-     */
-    protected function removeSessionInfoCacheEntry($sessionIdentifier);
-
-    /**
      * Explicitly writes and closes the session
      *
      * @return void

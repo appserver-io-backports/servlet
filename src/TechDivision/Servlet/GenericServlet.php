@@ -53,6 +53,18 @@ abstract class GenericServlet implements Servlet
     protected $servletInfo = '';
 
     /**
+     * Injects the shutdown handler.
+     *
+     * @param \TechDivision\Servlet\ShutdownHandler $shutdownHandler The shutdown handler
+     *
+     * @return void
+     */
+    public function injectShutdownHandler(ShutdownHandler $shutdownHandler)
+    {
+        $shutdownHandler->register($this);
+    }
+
+    /**
      * Initializes the servlet with the passed configuration.
      *
      * @param \TechDivision\Servlet\ServletConfig $servletConfig The configuration to initialize the servlet with
@@ -115,5 +127,27 @@ abstract class GenericServlet implements Servlet
     public function getInitParameter($name)
     {
         return $this->getServletConfig()->getInitParameter($name);
+    }
+
+    /**
+     * Will be invoked by the PHP when the servlets destruct method or exit() or die() has been invoked.
+
+     * @param \TechDivision\Servlet\ServletResponse $servletResponse The response sent back to the client
+     *
+     * @return void
+     */
+    public function shutdown(ServletResponse $servletResponse)
+    {
+
+        $content = '';
+
+        // check of output buffer has content
+        if (ob_get_length()) {
+            // set content with output buffer
+            $content = ob_get_clean();
+        }
+
+        // set content to response
+        $servletResponse->setContent($content);
     }
 }

@@ -48,7 +48,7 @@ class ServletResponseWrapper implements ServletResponse
      * 
      * @return void
      */
-    public function __construct(ServletResponse $response)
+    public function injectResponse(ServletResponse $response)
     {
         $this->response = $response;
     }

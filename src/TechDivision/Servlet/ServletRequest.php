@@ -102,9 +102,9 @@ interface ServletRequest
     /**
      * Return request content. 
      *
-     * @return string The request content
+     * @return resource The request content
      */
-    public function getContent();
+    public function getBodyStream();
 
     /**
      * Returns protocol version, HTTP/1.1 for example.

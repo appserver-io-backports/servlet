@@ -157,7 +157,7 @@ abstract class HttpServlet extends GenericServlet
     }
 
     /**
-     * Delegation method for specific Http methods:
+     * Delegation method for specific Http methods.
      *
      * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
      * @param \TechDivision\Servlet\ServletResponse $servletResponse The response instance

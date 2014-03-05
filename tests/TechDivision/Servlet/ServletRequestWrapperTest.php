@@ -51,7 +51,8 @@ class ServletRequestWrapperTest extends \PHPUnit_Framework_TestCase
              ->will($this->returnValue($serverName = '127.0.0.1'));
 
         // create a new wrapper instance
-        $wrapper = new ServletRequestWrapper($stub);
+        $wrapper = new ServletRequestWrapper();
+        $wrapper->injectRequest($stub);
         
         // check if the context path has been returned
         $this->assertSame($serverName, $wrapper->getServerName());
