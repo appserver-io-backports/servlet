@@ -131,7 +131,7 @@ abstract class GenericServlet implements Servlet
 
     /**
      * Will be invoked by the PHP when the servlets destruct method or exit() or die() has been invoked.
-
+     *
      * @param \TechDivision\Servlet\ServletResponse $servletResponse The response sent back to the client
      *
      * @return void

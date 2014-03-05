@@ -79,7 +79,7 @@ interface HttpServletRequest extends ServletRequest
     /**
      * Returns header info by given key
      *
-     * @param string $Name The header key to get
+     * @param string $name The header key to get
      *
      * @return string|null
      */
