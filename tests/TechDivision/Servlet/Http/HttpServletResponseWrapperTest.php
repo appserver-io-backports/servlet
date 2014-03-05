@@ -54,7 +54,7 @@ class HttpServletResponseWrapperTest extends \PHPUnit_Framework_TestCase
 
         // create a new wrapper instance
         $wrapper = new HttpServletResponseWrapper();
-        $wrapper->injectResponse($stub);
+        $wrapper->injectHttpResponse($stub);
         
         // check if the response code has been returned
         $this->assertSame($code, $wrapper->getCode());

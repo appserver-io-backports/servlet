@@ -54,7 +54,7 @@ class HttpServletRequestWrapperTest extends \PHPUnit_Framework_TestCase
 
         // create a new wrapper instance
         $wrapper = new HttpServletRequestWrapper();
-        $wrapper->injectRequest($stub);
+        $wrapper->injectHttpRequest($stub);
         
         // check if the query string has been returned
         $this->assertSame($queryString, $wrapper->getQueryString());
