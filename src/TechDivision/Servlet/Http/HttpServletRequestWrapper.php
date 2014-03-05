@@ -45,9 +45,9 @@ class HttpServletRequestWrapper extends ServletRequestWrapper implements HttpSer
      * 
      * @return void
      */
-    public function __construct(HttpServletRequest $request)
+    public function injectRequest(HttpServletRequest $request)
     {
-        parent::__construct($request);
+        parent::injectRequest($request);
     }
     
     /**

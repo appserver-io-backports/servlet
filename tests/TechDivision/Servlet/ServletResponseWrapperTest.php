@@ -51,7 +51,8 @@ class ServletResponseWrapperTest extends \PHPUnit_Framework_TestCase
              ->will($this->returnValue($acceptedEncodings = array('gzip', 'deflate', 'sdch')));
 
         // create a new wrapper instance
-        $wrapper = new ServletResponseWrapper($stub);
+        $wrapper = new ServletResponseWrapper();
+        $wrapper->injectResponse($stub);
         
         // check if the accepted encodings has been returned
         $this->assertSame($acceptedEncodings, $wrapper->getAcceptedEncodings());

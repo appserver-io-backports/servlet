@@ -48,7 +48,7 @@ class ServletRequestWrapper implements ServletRequest
      * 
      * @return void
      */
-    public function __construct(ServletRequest $request)
+    public function injectRequest(ServletRequest $request)
     {
         $this->request = $request;
     }
@@ -137,13 +137,13 @@ class ServletRequestWrapper implements ServletRequest
     }
 
     /**
-     * Return content
+     * Return request content. 
      *
-     * @return string $content
+     * @return resource The request content
      */
-    public function getContent()
+    public function getBodyStream()
     {
-        return $this->getRequest()->getContent();
+        return $this->getRequest()->getBodyStream();
     }
 
     /**
