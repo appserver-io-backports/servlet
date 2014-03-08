@@ -74,17 +74,6 @@ class ServletRequestWrapper implements ServletRequest
     {
         return $this->request;
     }
-    
-    /**
-     * Returns the host name passed with the request header.
-     * 
-     * @return string The host name of this request
-     * @see \TechDivision\Servlet\ServletRequest::getServerName()
-     */
-    public function getServerName()
-    {
-        return $this->getRequest()->getServerName();
-    }
 
     /**
      * Returns an part instance
@@ -103,37 +92,7 @@ class ServletRequestWrapper implements ServletRequest
      */
     public function getParameterMap()
     {
-        return $this->getRequest()->getParameterMap();
-    }
-
-    /**
-     * Returns accepted encodings data
-     *
-     * @return array
-     */
-    public function getAcceptedEncodings()
-    {
-        return $this->getRequest()->getAcceptedEncodings();
-    }
-
-    /**
-     * Returns the server's IP v4 address
-     *
-     * @return string
-     */
-    public function getServerAddress()
-    {
-        return $this->getRequest()->getServerAddress();
-    }
-
-    /**
-     * Returns server port
-     *
-     * @return string
-     */
-    public function getServerPort()
-    {
-        return $this->getRequest()->getServerPort();
+        return $this->getRequest()->getParams();
     }
 
     /**
@@ -157,26 +116,6 @@ class ServletRequestWrapper implements ServletRequest
     }
 
     /**
-     * Returns clients ip address
-     *
-     * @return mixed
-     */
-    public function getClientIp()
-    {
-        return $this->getRequest()->getClientIp();
-    }
-
-    /**
-     * Returns clients port
-     *
-     * @return int
-     */
-    public function getClientPort()
-    {
-        return $this->getRequest()->getClientPort();
-    }
-
-    /**
      * Returns the parameter with the passed name if available or null
      * if the parameter not exists.
      *
@@ -184,10 +123,11 @@ class ServletRequestWrapper implements ServletRequest
      * @param integer $filter The filter to use
      *
      * @return string|null
+     * @todo Implement filter handling
      */
     public function getParameter($name, $filter = FILTER_SANITIZE_STRING)
     {
-        return $this->getRequest()->getParameter($name, $filter);
+        return $this->getRequest()->getParam($name);
     }
 
     /**

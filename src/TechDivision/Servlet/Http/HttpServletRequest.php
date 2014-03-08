@@ -26,6 +26,26 @@ use TechDivision\Servlet\ServletRequest;
 
 /**
  * A servlet request implementation.
+ * 
+ * Here are some examples of the expected results:
+ * 
+ * http://127.0.0.1:8586/example/index/index.do
+ *   getServerName():  127.0.0.1
+ *   getContextPath(): /example 
+ *   getServletPath(): /index/index.do
+ *   getPathInfo(): 
+ * 
+ * http://example.local:8586/index/index.do 
+ *   getServerName():  example.local 
+ *   getContextPath(): /example 
+ *   getServletPath(): /index/index.do
+ *   getPathInfo():
+ * 
+ * http://example.local:8586/images.do/static/images/logo.png
+ *   getServerName():  example.local
+ *   getContextPath(): /example
+ *   getServletPath(): /images.do
+ *   getPathInfo():    /static/images/logo.png
  *
  * @category   Appserver
  * @package    TechDivision_Servlet
@@ -65,9 +85,15 @@ interface HttpServletRequest extends ServletRequest
      * Returns the absolute path info started from the context path.
      * 
      * @return string the absolute path info
-     * @see \TechDivision\Servlet\ServletRequest::getPathInfo()
      */
     public function getPathInfo();
+    
+    /**
+     * Returns the server name.
+     * 
+     * @return string The server name
+     */
+    public function getServerName();
 
     /**
      * Returns query string of the actual request.

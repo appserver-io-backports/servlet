@@ -42,9 +42,9 @@ interface ServletResponse
     public function getAcceptedEncodings();
 
     /**
-     * Returns the content string
+     * Returns the body stream as a resource.
      *
-     * @return string
+     * @return resource The body stream
      */
-    public function getContent();
+    public function getBodyStream();
 }
