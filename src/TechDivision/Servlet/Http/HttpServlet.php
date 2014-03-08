@@ -25,9 +25,9 @@ namespace TechDivision\Servlet\Http;
 
 use TechDivision\Http\HttpProtocol;
 use TechDivision\Servlet\GenericServlet;
+use TechDivision\Servlet\ServletException;
 use TechDivision\Servlet\ServletRequest;
 use TechDivision\Servlet\ServletResponse;
-use TechDivision\Servlet\ServletException;
 
 /**
  * Abstract Http servlet implementation.
@@ -47,13 +47,13 @@ abstract class HttpServlet extends GenericServlet
     /**
      * Implements Http CONNECT method.
      *
-     * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
-     * @param \TechDivision\Servlet\ServletResponse $servletResponse The response instance
+     * @param \TechDivision\Servlet\Http\ServletRequest  $servletRequest  The request instance
+     * @param \TechDivision\Servlet\Http\ServletResponse $servletResponse The response instance
      *
      * @return void
      * @throws \TechDivision\Servlet\ServletException Is thrown if the request method is not implemented
      */
-    public function doConnect(ServletRequest $servletRequest, ServletResponse $servletResponse)
+    public function doConnect(HttpServletRequest $servletRequest, HttpServletResponse $servletResponse)
     {
         throw new ServletException(sprintf('Method %s is not implemented in this servlet.', __METHOD__));
     }
@@ -61,13 +61,13 @@ abstract class HttpServlet extends GenericServlet
     /**
      * Implements Http DELETE method.
      *
-     * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
-     * @param \TechDivision\Servlet\ServletResponse $servletResponse The response instance
+     * @param \TechDivision\Servlet\Http\ServletRequest  $servletRequest  The request instance
+     * @param \TechDivision\Servlet\Http\ServletResponse $servletResponse The response instance
      *
      * @return void
      * @throws \TechDivision\Servlet\ServletException Is thrown if the request method is not implemented
      */
-    public function doDelete(ServletRequest $servletRequest, ServletResponse $servletResponse)
+    public function doDelete(HttpServletRequest $servletRequest, HttpServletResponse $servletResponse)
     {
         throw new ServletException(sprintf('Method %s is not implemented in this servlet.', __METHOD__));
     }
@@ -75,13 +75,13 @@ abstract class HttpServlet extends GenericServlet
     /**
      * Implements Http GET method.
      *
-     * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
-     * @param \TechDivision\Servlet\ServletResponse $servletResponse The response instance
+     * @param \TechDivision\Servlet\Http\ServletRequest  $servletRequest  The request instance
+     * @param \TechDivision\Servlet\Http\ServletResponse $servletResponse The response instance
      *
      * @return void
      * @throws \TechDivision\Servlet\ServletException Is thrown if the request method is not implemented
      */
-    public function doGet(ServletRequest $servletRequest, ServletResponse $servletResponse)
+    public function doGet(HttpServletRequest $servletRequest, HttpServletResponse $servletResponse)
     {
         throw new ServletException(sprintf('Method %s is not implemented in this servlet.', __METHOD__));
     }
@@ -89,13 +89,13 @@ abstract class HttpServlet extends GenericServlet
     /**
      * Implements Http HEAD method.
      *
-     * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
-     * @param \TechDivision\Servlet\ServletResponse $servletResponse The response instance
+     * @param \TechDivision\Servlet\Http\ServletRequest  $servletRequest  The request instance
+     * @param \TechDivision\Servlet\Http\ServletResponse $servletResponse The response instance
      *
      * @return void
      * @throws \TechDivision\Servlet\ServletException Is thrown if the request method is not implemented
      */
-    public function doHead(ServletRequest $servletRequest, ServletResponse $servletResponse)
+    public function doHead(HttpServletRequest $servletRequest, HttpServletResponse $servletResponse)
     {
         throw new ServletException(sprintf('Method %s is not implemented in this servlet.', __METHOD__));
     }
@@ -103,13 +103,13 @@ abstract class HttpServlet extends GenericServlet
     /**
      * Implements Http OPTIONS method.
      *
-     * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
-     * @param \TechDivision\Servlet\ServletResponse $servletResponse The response instance
+     * @param \TechDivision\Servlet\Http\ServletRequest  $servletRequest  The request instance
+     * @param \TechDivision\Servlet\Http\ServletResponse $servletResponse The response instance
      *
      * @return void
      * @throws \TechDivision\Servlet\ServletException Is thrown if the request method is not implemented
      */
-    public function doOptions(ServletRequest $servletRequest, ServletResponse $servletResponse)
+    public function doOptions(HttpServletRequest $servletRequest, HttpServletResponse $servletResponse)
     {
         throw new ServletException(sprintf('Method %s is not implemented in this servlet.', __METHOD__));
     }
@@ -117,13 +117,13 @@ abstract class HttpServlet extends GenericServlet
     /**
      * Implements Http POST method.
      *
-     * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
-     * @param \TechDivision\Servlet\ServletResponse $servletResponse The response instance
+     * @param \TechDivision\Servlet\Http\ServletRequest  $servletRequest  The request instance
+     * @param \TechDivision\Servlet\Http\ServletResponse $servletResponse The response instance
      *
      * @return void
      * @throws \TechDivision\Servlet\ServletException Is thrown if the request method is not implemented
      */
-    public function doPost(ServletRequest $servletRequest, ServletResponse $servletResponse)
+    public function doPost(HttpServletRequest $servletRequest, HttpServletResponse $servletResponse)
     {
         throw new ServletException(sprintf('Method %s is not implemented in this servlet.', __METHOD__));
     }
@@ -131,13 +131,13 @@ abstract class HttpServlet extends GenericServlet
     /**
      * Implements Http PUT method.
      *
-     * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
-     * @param \TechDivision\Servlet\ServletResponse $servletResponse The response instance
+     * @param \TechDivision\Servlet\Http\ServletRequest  $servletRequest  The request instance
+     * @param \TechDivision\Servlet\Http\ServletResponse $servletResponse The response instance
      *
      * @return void
      * @throws \TechDivision\Servlet\ServletException Is thrown if the request method is not implemented
      */
-    public function doPut(ServletRequest $servletRequest, ServletResponse $servletResponse)
+    public function doPut(HttpServletRequest $servletRequest, HttpServletResponse $servletResponse)
     {
         throw new ServletException(sprintf('Method %s is not implemented in this servlet.', __METHOD__));
     }
@@ -145,13 +145,13 @@ abstract class HttpServlet extends GenericServlet
     /**
      * Implements Http TRACE method.
      *
-     * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
-     * @param \TechDivision\Servlet\ServletResponse $servletResponse The response instance
+     * @param \TechDivision\Servlet\Http\ServletRequest  $servletRequest  The request instance
+     * @param \TechDivision\Servlet\Http\ServletResponse $servletResponse The response instance
      *
      * @return void
      * @throws \TechDivision\Servlet\ServletException Is thrown if the request method is not implemented
      */
-    public function doTrace(ServletRequest $servletRequest, ServletResponse $servletResponse)
+    public function doTrace(HttpServletRequest $servletRequest, HttpServletResponse $servletResponse)
     {
         throw new ServletException(sprintf('Method %s is not implemented in this servlet.', __METHOD__));
     }
@@ -169,7 +169,7 @@ abstract class HttpServlet extends GenericServlet
     {
         
         // pre-initialize response
-        $servletResponse->addHeader(HttpProtocol::HEADER_NAME_X_POWERED_BY, get_class($this));
+        $servletResponse->addHeader(HttpProtocol::HEADER_X_POWERED_BY, get_class($this));
         
         // check the request method to invoke the appropriate method
         switch ($servletRequest->getMethod()) {
@@ -202,5 +202,14 @@ abstract class HttpServlet extends GenericServlet
                     sprintf('%s is not implemented yet.', $servletRequest->getMethod())
                 );
         }
+    }
+
+    /**
+     * Destroys the object on shutdown.
+     *
+     * @return void
+     */
+    public function destroy()
+    {
     }
 }

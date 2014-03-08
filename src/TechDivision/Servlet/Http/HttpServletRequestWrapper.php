@@ -86,11 +86,20 @@ class HttpServletRequestWrapper extends ServletRequestWrapper implements HttpSer
      * Returns the absolute path info started from the context path.
      * 
      * @return string the absolute path info
-     * @see \TechDivision\Servlet\ServletRequest::getPathInfo()
      */
     public function getPathInfo()
     {
         return $this->getRequest()->getPathInfo();
+    }
+    
+    /**
+     * Returns the server name.
+     * 
+     * @return string The server name
+     */
+    public function getServerName()
+    {
+        return $this->getRequest()->getServerName();
     }
 
     /**

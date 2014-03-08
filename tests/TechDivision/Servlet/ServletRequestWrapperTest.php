@@ -35,11 +35,11 @@ class ServletRequestWrapperTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Test if the server name is returned correctly.
+     * Test if the request version is returned correctly.
      *
      * @return void
      */
-    public function testGetServerName()
+    public function testGetVersion()
     {
         
         // create a stub for the ServletRequest interface
@@ -47,14 +47,14 @@ class ServletRequestWrapperTest extends \PHPUnit_Framework_TestCase
         
         // Configure the stub.
         $stub->expects($this->any())
-             ->method('getServerName')
-             ->will($this->returnValue($serverName = '127.0.0.1'));
+             ->method('getVersion')
+             ->will($this->returnValue($version = 'HTTP/1.1'));
 
         // create a new wrapper instance
         $wrapper = new ServletRequestWrapper();
         $wrapper->injectRequest($stub);
         
-        // check if the context path has been returned
-        $this->assertSame($serverName, $wrapper->getServerName());
+        // check if the version has been returned
+        $this->assertSame($version, $wrapper->getVersion());
     }
 }

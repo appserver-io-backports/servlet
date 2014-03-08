@@ -93,13 +93,6 @@ interface HttpServletResponse extends ServletResponse
     public function getHeader($key);
 
     /**
-     * Return's the headers as string
-     *
-     * @return string
-     */
-    public function getHeadersAsString();
-
-    /**
      * Removes one single header from the headers array.
      *
      * @param string $header The header to remove

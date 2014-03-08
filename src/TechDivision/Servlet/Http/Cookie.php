@@ -192,7 +192,7 @@ class Cookie
      *
      * @param string $header The Set-Cookie string without the actual "Set-Cookie:" part
      *
-     * @return \TYPO3\Flow\Http\Cookie
+     * @return \TechDivision\Servlet\Http\Cookie
      * @see http://tools.ietf.org/html/rfc6265
      */
     public static function createFromRawSetCookieHeader($header)
