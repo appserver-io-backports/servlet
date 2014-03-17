@@ -145,17 +145,17 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
     }
 
     /**
-     * Returns http response code number only
+     * Returns Http response code number only.
      *
      * @return string
      */
-    public function getCode()
+    public function getStatusCode()
     {
-        return $this->getResponse()->getCode();
+        return $this->getResponse()->getStatusCode();
     }
 
     /**
-     * Returns response http version
+     * Returns response Http version.
      *
      * @return string
      */

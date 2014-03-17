@@ -35,16 +35,18 @@ interface ServletResponse
 {
 
     /**
-     * Return's accepted encodings data
-     *
-     * @return array
-     */
-    public function getAcceptedEncodings();
-
-    /**
      * Returns the body stream as a resource.
      *
      * @return resource The body stream
      */
     public function getBodyStream();
+
+    /**
+     * Appends the content.
+     *
+     * @param string $content The content to append
+     *
+     * @return void
+     */
+    public function appendBodyStream($content);
 }

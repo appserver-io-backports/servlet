@@ -64,13 +64,15 @@ class ServletResponseWrapper implements ServletResponse
     }
 
     /**
-     * Return's accepted encodings data
+     * Appends the content.
      *
-     * @return array
+     * @param string $content The content to append
+     *
+     * @return void
      */
-    public function getAcceptedEncodings()
+    public function appendBodyStream($content)
     {
-        return $this->getResponse()->getAcceptedEncodings();
+        return $this->getResponse()->appendBodyStream($content);
     }
 
     /**
