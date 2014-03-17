@@ -102,14 +102,14 @@ interface HttpServletResponse extends ServletResponse
     public function removeHeader($header);
 
     /**
-     * Returns http response code number only
+     * Returns Http response code number only
      *
      * @return string
      */
-    public function getCode();
+    public function getStatusCode();
 
     /**
-     * Returns response http version
+     * Returns response Http version
      *
      * @return string
      */
