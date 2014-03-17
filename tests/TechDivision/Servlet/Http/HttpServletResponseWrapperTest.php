@@ -49,14 +49,14 @@ class HttpServletResponseWrapperTest extends \PHPUnit_Framework_TestCase
         
         // Configure the stub.
         $stub->expects($this->any())
-             ->method('getCode')
-             ->will($this->returnValue($code = '404'));
+             ->method('getStatusCode')
+             ->will($this->returnValue($code = 404));
 
         // create a new wrapper instance
         $wrapper = new HttpServletResponseWrapper();
         $wrapper->injectHttpResponse($stub);
         
         // check if the response code has been returned
-        $this->assertSame($code, $wrapper->getCode());
+        $this->assertSame($code, $wrapper->getStatusCode());
     }
 }

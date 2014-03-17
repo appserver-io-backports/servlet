@@ -35,11 +35,11 @@ class ServletResponseWrapperTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Test that the accepted encodings are returned correctly.
+     * Test that the body stream is returned correctly.
      *
      * @return void
      */
-    public function testGetServerName()
+    public function testGetBodyStream()
     {
         
         // create a stub for the ServletResponse interface
@@ -47,14 +47,14 @@ class ServletResponseWrapperTest extends \PHPUnit_Framework_TestCase
         
         // Configure the stub.
         $stub->expects($this->any())
-             ->method('getAcceptedEncodings')
-             ->will($this->returnValue($acceptedEncodings = array('gzip', 'deflate', 'sdch')));
+             ->method('getBodyStream')
+             ->will($this->returnValue($bodyStream = fopen('php://input', 'r')));
 
         // create a new wrapper instance
         $wrapper = new ServletResponseWrapper();
         $wrapper->injectResponse($stub);
         
         // check if the accepted encodings has been returned
-        $this->assertSame($acceptedEncodings, $wrapper->getAcceptedEncodings());
+        $this->assertSame($bodyStream, $wrapper->getBodyStream());
     }
 }
