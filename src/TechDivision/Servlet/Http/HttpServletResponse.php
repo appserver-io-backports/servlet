@@ -114,4 +114,11 @@ interface HttpServletResponse extends ServletResponse
      * @return string
      */
     public function getVersion();
+
+    /**
+     * Reset the body stream
+     *
+     * @return void
+     */
+    public function resetBodyStream();
 }
