@@ -37,12 +37,12 @@ use TechDivision\Servlet\ServletResponseWrapper;
  */
 class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpServletResponse
 {
-    
+
     /**
      * Injects the passed response instance into this servlet response.
-     * 
+     *
      * @param \TechDivision\Servlet\Http\HttpServletResponse $response The response instance used for initialization
-     * 
+     *
      * @return void
      */
     public function injectHttpResponse(HttpServletResponse $response)
@@ -162,5 +162,15 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
     public function getVersion()
     {
         return $this->getResponse()->getVersion();
+    }
+
+    /**
+     * Reset the body stream.
+     *
+     * @return void
+     */
+    public function resetBodyStream()
+    {
+        return $this->getResponse()->resetBodyStream();
     }
 }
