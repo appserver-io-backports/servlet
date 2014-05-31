@@ -81,8 +81,6 @@ class HttpSessionWrapper extends ServletSessionWrapper implements HttpSession
     /**
      * Creates and returns the session cookie to be added to the response.
      *
-     * @param \TechDivision\Servlet\Http\ServletResponse $response The response that will be sent back to the client
-     *
      * @return void
      */
     public function start()
