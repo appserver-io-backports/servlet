@@ -58,6 +58,15 @@ interface HttpServletResponse extends ServletResponse
     public function hasCookie($cookieName);
 
     /**
+     * Returns the cookie with the  a cookie
+     *
+     * @param string $cookieName Name of the cookie to be checked
+     *
+     * @return \TechDivision\Servlet\Http\Cookie $cookie The cookie instance
+     */
+    public function getCookie($cookieName);
+
+    /**
      * Set's the headers
      *
      * @param array $headers The headers array
