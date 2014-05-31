@@ -33,29 +33,29 @@ namespace TechDivision\Servlet;
  */
 class ServletResponseWrapper implements ServletResponse
 {
-    
+
     /**
      * The response instance.
-     * 
+     *
      * @var \TechDivision\Servlet\ServletResponse
      */
     protected $response;
-    
+
     /**
      * Injects the passed response instance into this servlet response.
-     * 
+     *
      * @param \TechDivision\Servlet\ServletResponse $response The response instance used for initialization
-     * 
+     *
      * @return void
      */
     public function injectResponse(ServletResponse $response)
     {
         $this->response = $response;
     }
-    
+
     /**
-     * Returns the that will be send back to the client.
-     * 
+     * Returns the response that will be send back to the client.
+     *
      * @return \TechDivision\Servlet\ServletResponse The response instance
      */
     public function getResponse()
