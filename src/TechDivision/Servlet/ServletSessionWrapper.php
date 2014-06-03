@@ -291,4 +291,14 @@ class ServletSessionWrapper
     {
         $this->getSession()->destroy($reason);
     }
+
+    /**
+     * Returns the checksum for this session instance.
+     *
+     * @return string The checksum
+     */
+    public function checksum()
+    {
+        return $this->getSession()->checksum();
+    }
 }
