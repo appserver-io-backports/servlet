@@ -112,6 +112,43 @@ class HttpSessionWrapper extends ServletSessionWrapper implements HttpSession
     }
 
     /**
+     * Explicitly destroys all session data and adds a cookie to the
+     * response that invalidates the session in the browser.
+     *
+     * @param string $reason The reason why the session has been destroyed
+     *
+     * @return void
+     */
+    public function destroy($reason)
+    {
+
+        // check if the session has already been destroyed
+        if ($this->getId() != null) {
+
+            // create a new cookie with the session values
+            $cookie = new Cookie(
+                $this->getName(),
+                $this->getId(),
+                $this->getLifetime(),
+                $this->getMaximumAge(),
+                $this->getDomain(),
+                $this->getPath(),
+                $this->isSecure(),
+                $this->isHttpOnly()
+            );
+
+            // let the cookie expire
+            $cookie->expire();
+
+            // and add it to the response
+            $this->getResponse()->addCookie($cookie);
+        }
+
+        // destroy the sessions data
+        parent::destroy($reason);
+    }
+
+    /**
      * Generates and propagates a new session ID and transfers all existing data
      * to the new session.
      *
