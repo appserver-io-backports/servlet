@@ -202,4 +202,11 @@ interface ServletSession
      * @return void
      */
     public function destroy($reason);
+
+    /**
+     * Returns the checksum for this session instance.
+     *
+     * @return string The checksum
+     */
+    public function checksum();
 }
