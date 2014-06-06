@@ -130,6 +130,18 @@ class ServletSessionWrapper
     }
 
     /**
+     * Sets date and time after the session expires.
+     *
+     * @param integer|DateTime $lifetime The date and time after the session expires
+     *
+     * @return void
+     */
+    public function setLifetime($lifetime)
+    {
+        $this->getSession()->setLifetime($lifetime);
+    }
+
+    /**
      * Returns the number of seconds until the session expires.
      *
      * @return integer|null Number of seconds until the session expires
@@ -137,6 +149,18 @@ class ServletSessionWrapper
     public function getMaximumAge()
     {
         return $this->getSession()->getMaximumAge();
+    }
+
+    /**
+     * Sets the number of seconds until the session expires.
+     *
+     * @param integer $maximumAge Number of seconds until the session expires
+     *
+     * @return void
+     */
+    public function setMaximumAge($maximumAge)
+    {
+        $this->getSession()->setMaximumAge($maximumAge);
     }
 
     /**
@@ -150,6 +174,18 @@ class ServletSessionWrapper
     }
 
     /**
+     * Sets the host to which the user agent will send this cookie.
+     *
+     * @param string $domain The host to which the user agent will send this cookie
+     *
+     * @return void
+     */
+    public function setDomain($domain)
+    {
+        $this->getSession()->setDomain($domain);
+    }
+
+    /**
      * Returns the path describing the scope of this cookie.
      *
      * @return string The path describing the scope of this cookie
@@ -157,6 +193,18 @@ class ServletSessionWrapper
     public function getPath()
     {
         return $this->getSession()->getPath();
+    }
+
+    /**
+     * Sets the path describing the scope of this cookie.
+     *
+     * @param string $path The path describing the scope of this cookie
+     *
+     * @return void
+     */
+    public function setPath($path)
+    {
+        $this->getSession()->setPath($path);
     }
 
     /**
@@ -170,6 +218,18 @@ class ServletSessionWrapper
     }
 
     /**
+     * Sets the flag that this session should only be sent through a "secure" channel by the user agent.
+     *
+     * @param boolean $secure TRUE if the session should only be sent through a "secure" channel, else FALSE
+     *
+     * @return void
+     */
+    public function setSecure($secure = true)
+    {
+        $this->getSession()->setSecure($secure);
+    }
+
+    /**
      * Returns if this session should only be used through the HTTP protocol.
      *
      * @return boolean TRUE if the session should only be used through the HTTP protocol
@@ -177,6 +237,18 @@ class ServletSessionWrapper
     public function isHttpOnly()
     {
         return $this->getSession()->isHttpOnly();
+    }
+
+    /**
+     * Sets the flag that this session should only be used through the HTTP protocol.
+     *
+     * @param boolean $httpOnly TRUE if the session should only be used through the HTTP protocol
+     *
+     * @return void
+     */
+    public function setHttpOnly($httpOnly = true)
+    {
+        $this->getSession()->setHttpOnly($httpOnly);
     }
 
     /**
