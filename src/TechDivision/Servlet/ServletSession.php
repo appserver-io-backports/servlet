@@ -35,6 +35,75 @@ namespace TechDivision\Servlet;
  */
 interface ServletSession
 {
+    /**
+     * The configuration key for probability the garbage collector will be invoked on the session.
+     *
+     * @return string
+     */
+    const GARBAGE_COLLECTION_PROBABILITY = 'GarbageCollectionProbability';
+
+    /**
+     * The configuration key for the session name.
+     *
+     * @return string
+     */
+    const SESSION_NAME = 'SessionName';
+
+    /**
+     * The configuration key for the path we persist the session.
+     *
+     * @return string
+     */
+    const SESSION_SAVE_PATH = 'SessionSavePath';
+
+    /**
+     * The configuration key for the number of seconds until the session expires, if defined.
+     *
+     * @return string
+     */
+    const SESSION_MAXIMUM_AGE = 'SessionMaximumAge';
+
+    /**
+     * The configuration key for the inactivity timeout until the session will be invalidated.
+     *
+     * @return string
+     */
+    const SESSION_INACTIVITY_TIMEOUT = 'SessionInactivityTimeout';
+
+    /**
+     * The configuration key for the session cookie lifetime.
+     *
+     * @return string
+     */
+    const SESSION_COOKIE_LIFETIME = 'SessionCookieLifetime';
+
+    /**
+     * The configuration key for the cookie domain set for the session.
+     *
+     * @return string
+     */
+    const SESSION_COOKIE_DOMAIN = 'SessionCookieDomain';
+
+    /**
+     * The configuration key for the cookie path set for the session.
+     *
+     * @return string
+     */
+    const SESSION_COOKIE_PATH = 'SessionCookiePath';
+
+    /**
+     * The configuration key for the flag that the session cookie should only be set in a secure connection.
+     *
+     * @return string
+     */
+    const SESSION_COOKIE_SECURE = 'SessionCookieSecure';
+
+    /**
+     * The configuration key for the flag if the session should set a Http only cookie.
+     *
+     * @return string
+     */
+    const SESSION_COOKIE_HTTP_ONLY = 'SessionHttpOnly';
 
     /**
      * Starts the session, if it has not been already started
