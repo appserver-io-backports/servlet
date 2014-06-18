@@ -28,6 +28,8 @@ use TechDivision\Servlet\GenericServlet;
 use TechDivision\Servlet\ServletException;
 use TechDivision\Servlet\ServletRequest;
 use TechDivision\Servlet\ServletResponse;
+use TechDivision\Servlet\ServletSession;
+use TechDivision\Servlet\ServletConfig;
 
 /**
  * Abstract Http servlet implementation.
@@ -43,6 +45,16 @@ use TechDivision\Servlet\ServletResponse;
  */
 abstract class HttpServlet extends GenericServlet
 {
+
+    /**
+     * Implements Http CONNECT method.
+     *
+     * @param \TechDivision\Servlet\Http\ServletRequest  $servletRequest  The request instance
+     * @param \TechDivision\Servlet\Http\ServletResponse $servletResponse The response instance
+     *
+     * @param \TechDivision\Servlet\
+     */
+    protected $sessionSettings;
 
     /**
      * Implements Http CONNECT method.
@@ -161,16 +173,16 @@ abstract class HttpServlet extends GenericServlet
      *
      * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
      * @param \TechDivision\Servlet\ServletResponse $servletResponse The response instance
-     * 
+     *
      * @return void
      * @throws \TechDivision\Servlet\ServletException Is thrown if the request method is not available
      */
     public function service(ServletRequest $servletRequest, ServletResponse $servletResponse)
     {
-        
+
         // pre-initialize response
         $servletResponse->addHeader(HttpProtocol::HEADER_X_POWERED_BY, get_class($this));
-        
+
         // check the request method to invoke the appropriate method
         switch ($servletRequest->getMethod()) {
             case HttpProtocol::METHOD_CONNECT:

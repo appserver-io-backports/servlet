@@ -37,12 +37,12 @@ interface Servlet
     /**
      * Initializes the servlet with the passed configuration.
      *
-     * @param \TechDivision\Servlet\ServletConfig $config The configuration to initialize the servlet with
+     * @param \TechDivision\Servlet\ServletConfig $servletConfig The configuration to initialize the servlet with
      *
      * @throws \TechDivision\Servlet\ServletException Is thrown if the configuration has errors
      * @return void
      */
-    public function init(ServletConfig $config);
+    public function init(ServletConfig $servletConfig);
 
     /**
      * Return's the servlet's configuration.
@@ -53,7 +53,7 @@ interface Servlet
 
     /**
      * Returns the servlet context instance
-     * 
+     *
      * @return \TechDivision\Servlet\ServletContext The servlet context instance
      */
     public function getServletContext();
@@ -63,7 +63,7 @@ interface Servlet
      *
      * @param \TechDivision\Servlet\ServletRequest  $servletRequest  The request instance
      * @param \TechDivision\Servlet\ServletResponse $servletResponse The response sent back to the client
-     * 
+     *
      * @return void
      */
     public function service(ServletRequest $servletRequest, ServletResponse $servletResponse);

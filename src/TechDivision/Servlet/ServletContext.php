@@ -77,4 +77,29 @@ interface ServletContext
      * @return array The security context configurations
      */
     public function getSecuredUrlConfigs();
+
+    /**
+     * Returns the init parameter with the passed name.
+     *
+     * @param string $name Name of the init parameter to return
+     *
+     * @return null|string
+     */
+    public function getInitParameter($name);
+
+    /**
+     * Returns the session parameter with the passed name.
+     *
+     * @param string $name Name of the session parameter to return
+     *
+     * @return null|string
+     */
+    public function getSessionParameter($name);
+
+    /**
+     * Returns TRUE if we've at least one session parameter configured, else FALSE.
+     *
+     * @return boolean TRUE if we've at least one session parametr configured, else FALSE
+     */
+    public function hasSessionParameters();
 }

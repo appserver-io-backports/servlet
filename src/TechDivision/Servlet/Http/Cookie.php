@@ -23,11 +23,11 @@
 namespace TechDivision\Servlet\Http;
 
 /*
- * This script belongs to the TYPO3 Flow framework. 
- * 
- * It is free software; you can redistribute it and/or modify it under 
- * the terms of the GNU Lesser General Public License, either version 3 
- * of the License, or (at your option) any later version. 
+ * This script belongs to the TYPO3 Flow framework.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License, either version 3
+ * of the License, or (at your option) any later version.
  *
  * The TYPO3 project - inspiring people to share!
  */
@@ -46,10 +46,10 @@ namespace TechDivision\Servlet\Http;
  */
 class Cookie
 {
-    
+
     /**
      * Domain name for 'localhost'
-     * 
+     *
      * @var string
      */
     const LOCALHOST = 'localhost';
@@ -76,7 +76,7 @@ class Cookie
 
     /**
      * Cookie Name, a token (RFC 6265, 4.1.1)
-     * 
+     *
      * @var string
      */
     protected $name;
@@ -89,21 +89,21 @@ class Cookie
 
     /**
      * Unix timestamp of the expiration date / time or 0 for "session" expiration (RFC 6265, 4.1.2.1)
-     * 
+     *
      * @var integer
      */
     protected $expiresTimestamp;
 
     /**
      * Number of seconds until the cookie expires (RFC 6265, 4.1.2.2)
-     * 
+     *
      * @var integer
      */
     protected $maximumAge;
 
     /**
      * Hosts to which this cookie will be sent (RFC 6265, 4.1.2.3)
-     * 
+     *
      * @var string
      */
     protected $domain;
@@ -142,7 +142,7 @@ class Cookie
      */
     public function __construct($name, $value = null, $expires = 0, $maximumAge = null, $domain = null, $path = '/', $secure = false, $httpOnly = true)
     {
-        
+
         // check if valid data is passed
         if (preg_match(self::PATTERN_TOKEN, $name) !== 1) {
             throw new \InvalidArgumentException('The parameter "name" passed to the Cookie constructor must be a valid token as per RFC 2616, Section 2.2.', 1345101977);
@@ -162,16 +162,16 @@ class Cookie
         if ($path !== null && preg_match(self::PATTERN_PATH, $path) !== 1) {
             throw new \InvalidArgumentException('The parameter "path" passed to the Cookie constructor must be a valid path as per RFC 6265, Section 4.1.1.', 1345123078);
         }
-        
+
         /*
          * If the domain is 'localhost' do NOT set it
-         * 
+         *
          * Fix for Chrome issue https://code.google.com/p/chromium/issues/detail?id=56211
          */
         if ($domain !== Cookie::LOCALHOST) {
             $this->domain = $domain;
         }
-        
+
         // set the other cookie values
         $this->name = $name;
         $this->value = $value;
@@ -200,7 +200,7 @@ class Cookie
         $nameValueAndUnparsedAttributes = explode(';', $header, 2);
         $expectedNameValuePair = $nameValueAndUnparsedAttributes[0];
         $unparsedAttributes = isset($nameValueAndUnparsedAttributes[1]) ? $nameValueAndUnparsedAttributes[1] : '';
-        
+
         if (strpos($expectedNameValuePair, '=') === false) {
             return null;
         }
@@ -210,14 +210,14 @@ class Cookie
         if ($cookieName === '') {
             return null;
         }
-        
+
         $expiresAttribute = 0;
         $maxAgeAttribute = null;
         $domainAttribute = null;
         $pathAttribute = null;
         $secureAttribute = false;
         $httpOnlyAttribute = true;
-        
+
         if ($unparsedAttributes !== '') {
             foreach (explode(';', $unparsedAttributes) as $cookieAttributeValueString) {
                 $attributeNameAndValue = explode('=', $cookieAttributeValueString, 2);
@@ -260,9 +260,9 @@ class Cookie
                 }
             }
         }
-        
+
         $cookie = new Cookie($cookieName, $cookieValue, $expiresAttribute, $maxAgeAttribute, $domainAttribute, $pathAttribute, $secureAttribute, $httpOnlyAttribute);
-        
+
         return $cookie;
     }
 
@@ -280,7 +280,7 @@ class Cookie
     /**
      * Returns the value of this cookie
      *
-     * @return mixed 
+     * @return mixed
      * @api
      */
     public function getValue()
@@ -293,7 +293,7 @@ class Cookie
      *
      * @param mixed $value The new value
      *
-     * @return void 
+     * @return void
      * @api
      */
     public function setValue($value)
@@ -414,28 +414,28 @@ class Cookie
         } else {
             $value = $this->value;
         }
-        
+
         $cookiePair = sprintf('%s=%s', $this->name, urlencode($value));
         $attributes = '';
-        
+
         if ($this->expiresTimestamp !== 0) {
             $attributes .= '; Expires=' . gmdate('D, d-M-Y H:i:s T', $this->expiresTimestamp);
         }
-        
+
         if ($this->domain !== null) {
             $attributes .= '; Domain=' . $this->domain;
         }
-        
+
         $attributes .= '; Path=' . $this->path;
-        
+
         if ($this->secure) {
             $attributes .= '; Secure';
         }
-        
+
         if ($this->httpOnly) {
             $attributes .= '; HttpOnly';
         }
-        
+
         return $cookiePair . $attributes;
     }
 }
