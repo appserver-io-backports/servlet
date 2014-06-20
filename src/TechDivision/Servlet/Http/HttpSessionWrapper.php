@@ -22,6 +22,7 @@
 
 namespace TechDivision\Servlet\Http;
 
+use TechDivision\Servlet\SessionUtils;
 use TechDivision\Servlet\ServletSession;
 use TechDivision\Servlet\ServletSessionWrapper;
 
@@ -157,7 +158,34 @@ class HttpSessionWrapper extends ServletSessionWrapper implements HttpSession
      */
     public function renewId()
     {
-        throw new \Exception(__METHOD__ . ' not implemented yet');
+
+        // create a new session ID
+        $this->setId(SessionUtils::generateRandomString());
+
+        // load the session manager
+        $sessionManager = $this->getRequest()->getContext()->getSessionManager();
+
+        // attach this session with the new ID
+        $sessionManager->attach($this->getSession());
+
+        // create a new cookie with the session values
+        $cookie = new Cookie(
+            $this->getName(),
+            $this->getId(),
+            $this->getLifetime(),
+            $this->getMaximumAge(),
+            $this->getDomain(),
+            $this->getPath(),
+            $this->isSecure(),
+            $this->isHttpOnly()
+        );
+
+        // add the cookie to the response
+        $this->getRequest()->setRequestedSessionId($this->getId());
+        $this->getResponse()->addCookie($cookie);
+
+        // return the new session ID
+        return $this->getId();
     }
 
     /**
