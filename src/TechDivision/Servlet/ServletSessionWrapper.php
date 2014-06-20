@@ -96,6 +96,18 @@ class ServletSessionWrapper
     }
 
     /**
+     * Sets the current session identifier.
+     *
+     * @param string $id The current session identifier
+     *
+     * @return void
+     */
+    public function setId($id)
+    {
+         $this->getSession()->setId($id);
+    }
+
+    /**
      * Returns the unix time stamp marking the last point in time this session has
      * been in use.
      *
@@ -117,6 +129,18 @@ class ServletSessionWrapper
     public function getName()
     {
         return $this->getSession()->getName();
+    }
+
+    /**
+     * Sets the session name.
+     *
+     * @param string $name The session name
+     *
+     * @return void
+     */
+    public function setName($name)
+    {
+         $this->getSession()->setName($name);
     }
 
     /**
