@@ -50,6 +50,13 @@ interface ServletSession
     const SESSION_NAME = 'SessionName';
 
     /**
+     * The configuration key for the session file prefix.
+     *
+     * @return string
+     */
+    const SESSION_FILE_PREFIX = 'SessionFilePrefix';
+
+    /**
      * The configuration key for the path we persist the session.
      *
      * @return string
