@@ -33,41 +33,41 @@ namespace TechDivision\Servlet;
  */
 class ServletRequestWrapper implements ServletRequest
 {
-    
+
     /**
      * The servlet request instance.
-     * 
+     *
      * @var \TechDivision\Servlet\ServletRequest
      */
     protected $request;
-    
+
     /**
      * Injects the passed request instance into this servlet request.
-     * 
+     *
      * @param \TechDivision\Servlet\ServletRequest $request The request instance used for initialization
-     * 
+     *
      * @return void
      */
     public function injectRequest(ServletRequest $request)
     {
         $this->request = $request;
     }
-    
+
     /**
      * Sets the passed request instance into this servlet request.
-     * 
+     *
      * @param \TechDivision\Servlet\ServletRequest $request The request instance used for initialization
-     * 
+     *
      * @return void
      */
     public function setRequest(ServletRequest $request)
     {
         $this->request = $request;
     }
-    
+
     /**
      * Returns the wrapped request object.
-     * 
+     *
      * @return \TechDivision\Servlet\ServletRequest The wrapped request object
      */
     public function getRequest()
@@ -96,7 +96,7 @@ class ServletRequestWrapper implements ServletRequest
     }
 
     /**
-     * Return request content. 
+     * Return request content.
      *
      * @return resource The request content
      */
@@ -150,5 +150,27 @@ class ServletRequestWrapper implements ServletRequest
     public function getParts()
     {
         return $this->getRequest()->getParts();
+    }
+
+    /**
+     * Sets the flag to mark the request dispatched.
+     *
+     * @param boolean $dispatched TRUE if the request has already been dispatched, else FALSE
+     *
+     * @return void
+     */
+    public function setDispatched($dispatched = true)
+    {
+        $this->getRequest()->setDispatched($dispatched);
+    }
+
+    /**
+     * Sets the flag that shows if the request has already been dispatched.
+     *
+     * @return boolean TRUE if the request has already been dispatched, else FALSE
+     */
+    public function isDispatched()
+    {
+        return $this->getRequest()->isDispatched();
     }
 }

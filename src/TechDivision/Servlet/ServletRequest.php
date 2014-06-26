@@ -53,7 +53,7 @@ interface ServletRequest
     public function getParameter($name, $filter = FILTER_SANITIZE_STRING);
 
     /**
-     * Return request content. 
+     * Return request content.
      *
      * @return resource The request content
      */
@@ -81,4 +81,11 @@ interface ServletRequest
      * @return array A collection of HttpPart objects
      */
     public function getParts();
+
+    /**
+     * Sets the flag that shows if the request has already been dispatched.
+     *
+     * @return boolean TRUE if the request has already been dispatched, else FALSE
+     */
+    public function isDispatched();
 }
