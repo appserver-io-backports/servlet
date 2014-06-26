@@ -102,4 +102,11 @@ interface ServletContext
      * @return boolean TRUE if we've at least one session parametr configured, else FALSE
      */
     public function hasSessionParameters();
+
+    /**
+     * Returns the webapp base path.
+     *
+     * @return string The webapp base path
+     */
+    public function getWebappPath();
 }
