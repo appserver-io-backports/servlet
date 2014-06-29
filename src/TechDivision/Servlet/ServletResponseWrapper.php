@@ -64,15 +64,29 @@ class ServletResponseWrapper implements ServletResponse
     }
 
     /**
-     * Appends the content.
+     * Appends body stream with content.
      *
      * @param string $content The content to append
      *
-     * @return void
+     * @return integer The number of written bytes
      */
     public function appendBodyStream($content)
     {
         return $this->getResponse()->appendBodyStream($content);
+    }
+
+    /**
+     * Copies a source stream to body stream.
+     *
+     * @param resource $sourceStream The file pointer to source stream
+     * @param integer  $maxlength    The max length to read from source stream
+     * @param integer  $offset       The offset from source stream to read
+     *
+     * @return integer the total number of bytes copied
+     */
+    public function copyBodyStream($sourceStream, $maxlength = null, $offset = null)
+    {
+        return $this->getResponse()->copyBodyStream($sourceStream, $maxlength, $offset);
     }
 
     /**
