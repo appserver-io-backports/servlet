@@ -70,7 +70,7 @@ class ServletResponseWrapper implements ServletResponse
      *
      * @return integer The number of written bytes
      */
-    public function appendBodyStream($content);
+    public function appendBodyStream($content)
     {
         return $this->getResponse()->appendBodyStream($content);
     }
