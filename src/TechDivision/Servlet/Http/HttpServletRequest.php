@@ -23,24 +23,25 @@
 namespace TechDivision\Servlet\Http;
 
 use TechDivision\Servlet\ServletRequest;
+use TechDivision\HttpMessage\RequestInterface;
 
 /**
  * A servlet request implementation.
- * 
+ *
  * Here are some examples of the expected results:
- * 
+ *
  * http://127.0.0.1:8586/example/index/index.do
  *   getServerName():  127.0.0.1
- *   getContextPath(): /example 
- *   getServletPath(): /index/index.do
- *   getPathInfo(): 
- * 
- * http://example.local:8586/index/index.do 
- *   getServerName():  example.local 
- *   getContextPath(): /example 
+ *   getContextPath(): /example
  *   getServletPath(): /index/index.do
  *   getPathInfo():
- * 
+ *
+ * http://example.local:8586/index/index.do
+ *   getServerName():  example.local
+ *   getContextPath(): /example
+ *   getServletPath(): /index/index.do
+ *   getPathInfo():
+ *
  * http://example.local:8586/images.do/static/images/logo.png
  *   getServerName():  example.local
  *   getContextPath(): /example
@@ -55,42 +56,42 @@ use TechDivision\Servlet\ServletRequest;
  * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link       http://www.appserver.io
  */
-interface HttpServletRequest extends ServletRequest
+interface HttpServletRequest extends ServletRequest, RequestInterface
 {
-    
+
     /**
      * Returns the application context name (application name prefixed with a slash) for the actual request.
-     * 
+     *
      * @return string The application context name
      */
     public function getContextPath();
-    
+
     /**
      * Returns the path to the servlet used to handle this request.
-     * 
+     *
      * @return string The relative path to the servlet
      */
     public function getServletPath();
 
     /**
      * Returns the session for this request.
-     * 
+     *
      * @param boolean $create TRUE to create a new session, else FALSE
      *
      * @return \TechDivision\Servlet\Http\HttpSession The session instance
      */
     public function getSession($create = false);
-    
+
     /**
      * Returns the absolute path info started from the context path.
-     * 
+     *
      * @return string the absolute path info
      */
     public function getPathInfo();
-    
+
     /**
      * Returns the server name.
-     * 
+     *
      * @return string The server name
      */
     public function getServerName();
@@ -117,20 +118,6 @@ interface HttpServletRequest extends ServletRequest
      * @return array
      */
     public function getHeaders();
-
-    /**
-     * Returns request method
-     *
-     * @return string
-     */
-    public function getMethod();
-
-    /**
-     * Returns request uri
-     *
-     * @return string
-     */
-    public function getUri();
 
     /**
      * Returns true if the request has a cookie header with the passed
