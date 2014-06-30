@@ -106,6 +106,18 @@ class ServletRequestWrapper implements ServletRequest
     }
 
     /**
+     * Resets the stream resource pointing to body content.
+     *
+     * @param resource $bodyStream The body content stream resource
+     *
+     * @return void
+     */
+    public function setBodyStream($bodyStream)
+    {
+        $this->getRequest()->setBodyStream($bodyStream);
+    }
+
+    /**
      * Returns protocol version
      *
      * @return string

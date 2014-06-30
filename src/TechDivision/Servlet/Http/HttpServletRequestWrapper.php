@@ -37,32 +37,32 @@ use TechDivision\Servlet\ServletRequestWrapper;
  */
 class HttpServletRequestWrapper extends ServletRequestWrapper implements HttpServletRequest
 {
-    
+
     /**
      * Injects the passed request instance into this servlet request.
-     * 
+     *
      * @param \TechDivision\Servlet\Http\HttpServletRequest $request The request instance used for initialization
-     * 
+     *
      * @return void
      */
     public function injectHttpRequest(HttpServletRequest $request)
     {
         $this->injectRequest($request);
     }
-    
+
     /**
      * Returns the application context name (application name prefixed with a slash) for the actual request.
-     * 
+     *
      * @return string The application context name
      */
     public function getContextPath()
     {
         return $this->getRequest()->getContextPath();
     }
-    
+
     /**
      * Returns the path to the servlet used to handle this request.
-     * 
+     *
      * @return string The relative path to the servlet
      */
     public function getServletPath()
@@ -72,7 +72,7 @@ class HttpServletRequestWrapper extends ServletRequestWrapper implements HttpSer
 
     /**
      * Returns the session for this request.
-     * 
+     *
      * @param boolean $create TRUE to create a new session, else FALSE
      *
      * @return \TechDivision\Servlet\Http\HttpSession The session instance
@@ -81,20 +81,20 @@ class HttpServletRequestWrapper extends ServletRequestWrapper implements HttpSer
     {
         return $this->getRequest()->getSession($create);
     }
-    
+
     /**
      * Returns the absolute path info started from the context path.
-     * 
+     *
      * @return string the absolute path info
      */
     public function getPathInfo()
     {
         return $this->getRequest()->getPathInfo();
     }
-    
+
     /**
      * Returns the server name.
-     * 
+     *
      * @return string The server name
      */
     public function getServerName()
@@ -125,13 +125,50 @@ class HttpServletRequestWrapper extends ServletRequestWrapper implements HttpSer
     }
 
     /**
-     * Returns headers data
+     * Returns headers data.
      *
      * @return array
      */
     public function getHeaders()
     {
         return $this->getRequest()->getHeaders();
+    }
+
+    /**
+     * Adds a header information got from connection.
+     *
+     * @param string $name  The header name
+     * @param string $value The headers value
+     *
+     * @return void
+     */
+    public function addHeader($name, $value)
+    {
+        $this->getRequest()->addHeader($name, $value);
+    }
+
+    /**
+     * Checks if header exists by given name.
+     *
+     * @param string $name The header name to check
+     *
+     * @return boolean
+    */
+    public function hasHeader($name)
+    {
+        return $this->getRequest()->hasHeader($name);
+    }
+
+    /**
+     * Set headers data.
+     *
+     * @param array $headers The headers array to set
+     *
+     * @return void
+     */
+    public function setHeaders(array $headers)
+    {
+        $this->getRequest()->setHeaders($headers);
     }
 
     /**
@@ -145,13 +182,42 @@ class HttpServletRequestWrapper extends ServletRequestWrapper implements HttpSer
     }
 
     /**
-     * Returns request uri
+     * Sets the method to be performed on the resource identified by the
+     * Request-URI.
+     *
+     * While HTTP method names are typically all uppercase characters, HTTP
+     * method names are case-sensitive and thus implementations SHOULD NOT
+     * modify the given string.
+     *
+     * @param string $method Case-insensitive method
+     *
+     * @return void
+     */
+    public function setMethod($method)
+    {
+        return $this->getRequest()->setMethod($method);
+    }
+
+    /**
+     * Returns request URI.
      *
      * @return string
      */
     public function getUri()
     {
         return $this->getRequest()->getUri();
+    }
+
+    /**
+     * Sets the URI.
+     *
+     * @param string $uri The uri
+     *
+     * @return void
+     */
+    public function setUri($uri)
+    {
+        $this->getRequest()->setUri($uri);
     }
 
     /**

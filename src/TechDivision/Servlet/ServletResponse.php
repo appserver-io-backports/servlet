@@ -60,4 +60,18 @@ interface ServletResponse
      * @return integer the total number of bytes copied
      */
     public function copyBodyStream($sourceStream, $maxlength = null, $offset = null);
+
+    /**
+     * Return content
+     *
+     * @return string $content
+     */
+    public function getBodyContent();
+
+    /**
+     * Reset the body stream
+     *
+     * @return void
+     */
+    public function resetBodyStream();
 }

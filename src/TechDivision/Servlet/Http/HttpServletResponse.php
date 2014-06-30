@@ -118,6 +118,19 @@ interface HttpServletResponse extends ServletResponse
     public function getStatusCode();
 
     /**
+     * Gets the response Reason-Phrase, a short textual description of the
+     * Status-Code.
+     *
+     * Because a Reason-Phrase is not a required element in response
+     * Status-Line, the Reason-Phrase value MAY be null. Implementations MAY
+     * choose to return the default RFC 2616 recommended reason phrase for the
+     * response's Status-Code.
+     *
+     * @return string|null Reason phrase, or null if unknown.
+     */
+    public function getStatusReasonPhrase();
+
+    /**
      * Returns response Http version
      *
      * @return string

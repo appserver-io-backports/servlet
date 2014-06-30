@@ -60,6 +60,15 @@ interface ServletRequest
     public function getBodyStream();
 
     /**
+     * Resets the stream resource pointing to body content.
+     *
+     * @param resource $bodyStream The body content stream resource
+     *
+     * @return void
+     */
+    public function setBodyStream($bodyStream);
+
+    /**
      * Returns protocol version, HTTP/1.1 for example.
      *
      * @return string The protocol version
