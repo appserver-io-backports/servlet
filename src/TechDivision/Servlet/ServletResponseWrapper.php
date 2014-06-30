@@ -98,4 +98,24 @@ class ServletResponseWrapper implements ServletResponse
     {
         return $this->getResponse()->getBodyStream();
     }
+
+    /**
+     * Return content
+     *
+     * @return string $content
+     */
+    public function getBodyContent()
+    {
+        return $this->getResponse()->getBodyContent();
+    }
+
+    /**
+     * Reset the body stream
+     *
+     * @return void
+     */
+    public function resetBodyStream()
+    {
+        return $this->getResponse()->resetBodyStream();
+    }
 }
