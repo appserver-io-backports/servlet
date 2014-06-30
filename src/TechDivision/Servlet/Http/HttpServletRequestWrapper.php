@@ -125,13 +125,50 @@ class HttpServletRequestWrapper extends ServletRequestWrapper implements HttpSer
     }
 
     /**
-     * Returns headers data
+     * Returns headers data.
      *
      * @return array
      */
     public function getHeaders()
     {
         return $this->getRequest()->getHeaders();
+    }
+
+    /**
+     * Adds a header information got from connection.
+     *
+     * @param string $name  The header name
+     * @param string $value The headers value
+     *
+     * @return void
+     */
+    public function addHeader($name, $value)
+    {
+        $this->getRequest()->addHeader($name, $value);
+    }
+
+    /**
+     * Checks if header exists by given name.
+     *
+     * @param string $name The header name to check
+     *
+     * @return boolean
+    */
+    public function hasHeader($name)
+    {
+        return $this->getRequest()->hasHeader($name);
+    }
+
+    /**
+     * Set headers data.
+     *
+     * @param array $headers The headers array to set
+     *
+     * @return void
+     */
+    public function setHeaders(array $headers)
+    {
+        $this->getRequest()->setHeaders($headers);
     }
 
     /**
@@ -156,7 +193,7 @@ class HttpServletRequestWrapper extends ServletRequestWrapper implements HttpSer
      *
      * @return void
      */
-    public function setMethod($method);
+    public function setMethod($method)
     {
         return $this->getRequest()->setMethod($method);
     }

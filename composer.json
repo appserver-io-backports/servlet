@@ -12,6 +12,7 @@
     ],
     "require": {
         "php" : ">=5.4.0",
+        "techdivision/httpmessage": "dev-master",
         "techdivision/http": "dev-master"
     },
     "autoload": {
