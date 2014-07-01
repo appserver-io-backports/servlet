@@ -23,6 +23,7 @@
 namespace TechDivision\Servlet\Http;
 
 use TechDivision\Servlet\ServletResponse;
+use TechDivision\HttpMessage\ResponseInterface;
 
 /**
  * A Http servlet response implementation.
@@ -35,7 +36,7 @@ use TechDivision\Servlet\ServletResponse;
  * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link       http://www.appserver.io
  */
-interface HttpServletResponse extends ServletResponse
+interface HttpServletResponse extends ServletResponse, ResponseInterface
 {
 
     /**
@@ -109,6 +110,15 @@ interface HttpServletResponse extends ServletResponse
      * @return void
      */
     public function removeHeader($header);
+
+    /**
+     * Checks if header exists by given name.
+     *
+     * @param string $name The header name to check
+     *
+     * @return boolean TRUE if the header is available, else FALSE
+     */
+    public function hasHeader($name);
 
     /**
      * Returns Http response code number only

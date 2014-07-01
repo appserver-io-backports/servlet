@@ -118,4 +118,16 @@ class ServletResponseWrapper implements ServletResponse
     {
         return $this->getResponse()->resetBodyStream();
     }
+
+    /**
+     * Resets the stream resource pointing to body content.
+     *
+     * @param resource $bodyStream The body content stream resource
+     *
+     * @return void
+     */
+    public function setBodyStream($bodyStream)
+    {
+        $this->getResponse()->setBodyStream($bodyStream);
+    }
 }
