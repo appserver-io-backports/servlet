@@ -157,6 +157,18 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
     }
 
     /**
+     * Checks if header exists by given name.
+     *
+     * @param string $name The header name to check
+     *
+     * @return boolean TRUE if the header is available, else FALSE
+     */
+    public function hasHeader($name)
+    {
+        return $this->getResponse()->hasHeader($name);
+    }
+
+    /**
      * Returns Http response code number only.
      *
      * @return string
