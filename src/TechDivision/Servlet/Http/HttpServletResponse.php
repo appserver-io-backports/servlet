@@ -23,6 +23,7 @@
 namespace TechDivision\Servlet\Http;
 
 use TechDivision\Servlet\ServletResponse;
+use TechDivision\Http\HttpCookieInterface;
 use TechDivision\HttpMessage\ResponseInterface;
 
 /**
@@ -40,13 +41,13 @@ interface HttpServletResponse extends ServletResponse, ResponseInterface
 {
 
     /**
-     * Add's a cookie
+     * Adds a cookie.
      *
-     * @param \TechDivision\Servlet\Http\Cookie $cookie The cookie instance to add
+     * @param \TechDivision\Http\HttpCookieInterface $cookie The cookie instance to add
      *
      * @return void
      */
-    public function addCookie(Cookie $cookie);
+    public function addCookie(HttpCookieInterface $cookie);
 
     /**
      * Returns TRUE if the response already has a cookie with the passed
@@ -63,7 +64,7 @@ interface HttpServletResponse extends ServletResponse, ResponseInterface
      *
      * @param string $cookieName Name of the cookie to be checked
      *
-     * @return \TechDivision\Servlet\Http\Cookie $cookie The cookie instance
+     * @return \TechDivision\Http\HttpCookieInterface $cookie The cookie instance
      */
     public function getCookie($cookieName);
 
@@ -141,14 +142,14 @@ interface HttpServletResponse extends ServletResponse, ResponseInterface
     public function getStatusReasonPhrase();
 
     /**
-     * Returns response Http version
+     * Returns response Http version.
      *
      * @return string
      */
     public function getVersion();
 
     /**
-     * Reset the body stream
+     * Reset the body stream.
      *
      * @return void
      */

@@ -22,6 +22,7 @@
 
 namespace TechDivision\Servlet\Http;
 
+use TechDivision\Http\HttpCookie;
 use TechDivision\Servlet\SessionUtils;
 use TechDivision\Servlet\ServletSession;
 use TechDivision\Servlet\ServletSessionWrapper;
@@ -93,7 +94,7 @@ class HttpSessionWrapper extends ServletSessionWrapper implements HttpSession
         }
 
         // create a new cookie with the session values
-        $cookie = new Cookie(
+        $cookie = new HttpCookie(
             $this->getName(),
             $this->getId(),
             $this->getLifetime(),
@@ -127,7 +128,7 @@ class HttpSessionWrapper extends ServletSessionWrapper implements HttpSession
         if ($this->getId() != null) {
 
             // create a new cookie with the session values
-            $cookie = new Cookie(
+            $cookie = new HttpCookie(
                 $this->getName(),
                 $this->getId(),
                 $this->getLifetime(),
@@ -169,7 +170,7 @@ class HttpSessionWrapper extends ServletSessionWrapper implements HttpSession
         $sessionManager->attach($this->getSession());
 
         // create a new cookie with the session values
-        $cookie = new Cookie(
+        $cookie = new HttpCookie(
             $this->getName(),
             $this->getId(),
             $this->getLifetime(),
