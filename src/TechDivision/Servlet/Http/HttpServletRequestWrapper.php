@@ -238,7 +238,7 @@ class HttpServletRequestWrapper extends ServletRequestWrapper implements HttpSer
      *
      * @param string $cookieName The name of the cookie to return
      *
-     * @return mixed The cookie value
+     * @return \TechDivision\Http\HttpCookieInterface The cookie instance
      */
     public function getCookie($cookieName)
     {

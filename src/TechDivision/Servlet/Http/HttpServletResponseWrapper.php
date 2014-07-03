@@ -22,6 +22,7 @@
 
 namespace TechDivision\Servlet\Http;
 
+use TechDivision\Http\HttpCookieInterface;
 use TechDivision\Servlet\ServletResponseWrapper;
 
 /**
@@ -51,13 +52,13 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
     }
 
     /**
-     * Add's a cookie
+     * Adds a cookie.
      *
-     * @param \TechDivision\Servlet\Http\Cookie $cookie The cookie instance to add
+     * @param \TechDivision\Http\HttpCookieInterface $cookie The cookie instance to add
      *
      * @return void
      */
-    public function addCookie(Cookie $cookie)
+    public function addCookie(HttpCookieInterface $cookie)
     {
         $this->getResponse()->addCookie($cookie);
     }
@@ -80,7 +81,7 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
      *
      * @param string $cookieName Name of the cookie to be checked
      *
-     * @return \TechDivision\Servlet\Http\Cookie $cookie The cookie instance
+     * @return \TechDivision\Http\HttpCookieInterface $cookie The cookie instance
      */
     public function getCookie($cookieName)
     {
