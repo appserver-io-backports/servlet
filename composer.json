@@ -4,6 +4,7 @@
     "description": "Servlet package default implementation.",
     "homepage": "https://github.com/techdivision/TechDivision_Servlet",
     "license": ["OSL-3.0"],
+    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "vcs",
