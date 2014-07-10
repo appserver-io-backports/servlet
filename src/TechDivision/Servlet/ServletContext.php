@@ -23,6 +23,8 @@
 
 namespace TechDivision\Servlet;
 
+use TechDivision\Application\Interfaces\ManagerInterface;
+
 /**
  * Interface that defines a servlet contenxt.
  *
@@ -35,8 +37,15 @@ namespace TechDivision\Servlet;
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      http://www.appserver.io
  */
-interface ServletContext
+interface ServletContext extends ManagerInterface
 {
+
+    /**
+     * The unique identifier to be registered in the application context.
+     *
+     * @var string
+     */
+    const IDENTIFIER = ServletContext::class;
 
     /**
      * Return's all servlets
