@@ -53,11 +53,20 @@ interface ServletRequest
     public function getParameter($name, $filter = FILTER_SANITIZE_STRING);
 
     /**
-     * Return request content. 
+     * Return request content.
      *
      * @return resource The request content
      */
     public function getBodyStream();
+
+    /**
+     * Resets the stream resource pointing to body content.
+     *
+     * @param resource $bodyStream The body content stream resource
+     *
+     * @return void
+     */
+    public function setBodyStream($bodyStream);
 
     /**
      * Returns protocol version, HTTP/1.1 for example.
@@ -81,4 +90,11 @@ interface ServletRequest
      * @return array A collection of HttpPart objects
      */
     public function getParts();
+
+    /**
+     * Sets the flag that shows if the request has already been dispatched.
+     *
+     * @return boolean TRUE if the request has already been dispatched, else FALSE
+     */
+    public function isDispatched();
 }

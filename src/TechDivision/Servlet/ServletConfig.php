@@ -40,10 +40,10 @@ interface ServletConfig
      * @return string The servlet name
      */
     public function getServletName();
-    
+
     /**
      * Returns the servlet context instance.
-     * 
+     *
      * @return \TechDivision\Servlet\ServletContext The context instance
      */
     public function getServletContext();
@@ -56,4 +56,11 @@ interface ServletConfig
      * @return null|string
      */
     public function getInitParameter($name);
+
+    /**
+     * Returns the webapp base path.
+     *
+     * @return string The webapp base path
+     */
+    public function getWebappPath();
 }

@@ -22,6 +22,7 @@
 
 namespace TechDivision\Servlet\Http;
 
+use TechDivision\Http\HttpCookieInterface;
 use TechDivision\Servlet\ServletResponseWrapper;
 
 /**
@@ -51,13 +52,13 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
     }
 
     /**
-     * Add's a cookie
+     * Adds a cookie.
      *
-     * @param \TechDivision\Servlet\Http\Cookie $cookie The cookie instance to add
+     * @param \TechDivision\Http\HttpCookieInterface $cookie The cookie instance to add
      *
      * @return void
      */
-    public function addCookie(Cookie $cookie)
+    public function addCookie(HttpCookieInterface $cookie)
     {
         $this->getResponse()->addCookie($cookie);
     }
@@ -80,7 +81,7 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
      *
      * @param string $cookieName Name of the cookie to be checked
      *
-     * @return \TechDivision\Servlet\Http\Cookie $cookie The cookie instance
+     * @return \TechDivision\Http\HttpCookieInterface $cookie The cookie instance
      */
     public function getCookie($cookieName)
     {
@@ -157,6 +158,18 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
     }
 
     /**
+     * Checks if header exists by given name.
+     *
+     * @param string $name The header name to check
+     *
+     * @return boolean TRUE if the header is available, else FALSE
+     */
+    public function hasHeader($name)
+    {
+        return $this->getResponse()->hasHeader($name);
+    }
+
+    /**
      * Returns Http response code number only.
      *
      * @return string
@@ -164,6 +177,22 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
     public function getStatusCode()
     {
         return $this->getResponse()->getStatusCode();
+    }
+
+    /**
+     * Gets the response Reason-Phrase, a short textual description of the
+     * Status-Code.
+     *
+     * Because a Reason-Phrase is not a required element in response
+     * Status-Line, the Reason-Phrase value MAY be null. Implementations MAY
+     * choose to return the default RFC 2616 recommended reason phrase for the
+     * response's Status-Code.
+     *
+     * @return string|null Reason phrase, or null if unknown.
+     */
+    public function getStatusReasonPhrase()
+    {
+        return $this->getResponse()->getStatusReasonPhrase();
     }
 
     /**

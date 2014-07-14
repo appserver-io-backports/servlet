@@ -23,6 +23,8 @@
 namespace TechDivision\Servlet\Http;
 
 use TechDivision\Servlet\ServletResponse;
+use TechDivision\Http\HttpCookieInterface;
+use TechDivision\HttpMessage\ResponseInterface;
 
 /**
  * A Http servlet response implementation.
@@ -35,17 +37,17 @@ use TechDivision\Servlet\ServletResponse;
  * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link       http://www.appserver.io
  */
-interface HttpServletResponse extends ServletResponse
+interface HttpServletResponse extends ServletResponse, ResponseInterface
 {
 
     /**
-     * Add's a cookie
+     * Adds a cookie.
      *
-     * @param \TechDivision\Servlet\Http\Cookie $cookie The cookie instance to add
+     * @param \TechDivision\Http\HttpCookieInterface $cookie The cookie instance to add
      *
      * @return void
      */
-    public function addCookie(Cookie $cookie);
+    public function addCookie(HttpCookieInterface $cookie);
 
     /**
      * Returns TRUE if the response already has a cookie with the passed
@@ -62,7 +64,7 @@ interface HttpServletResponse extends ServletResponse
      *
      * @param string $cookieName Name of the cookie to be checked
      *
-     * @return \TechDivision\Servlet\Http\Cookie $cookie The cookie instance
+     * @return \TechDivision\Http\HttpCookieInterface $cookie The cookie instance
      */
     public function getCookie($cookieName);
 
@@ -111,6 +113,15 @@ interface HttpServletResponse extends ServletResponse
     public function removeHeader($header);
 
     /**
+     * Checks if header exists by given name.
+     *
+     * @param string $name The header name to check
+     *
+     * @return boolean TRUE if the header is available, else FALSE
+     */
+    public function hasHeader($name);
+
+    /**
      * Returns Http response code number only
      *
      * @return string
@@ -118,14 +129,27 @@ interface HttpServletResponse extends ServletResponse
     public function getStatusCode();
 
     /**
-     * Returns response Http version
+     * Gets the response Reason-Phrase, a short textual description of the
+     * Status-Code.
+     *
+     * Because a Reason-Phrase is not a required element in response
+     * Status-Line, the Reason-Phrase value MAY be null. Implementations MAY
+     * choose to return the default RFC 2616 recommended reason phrase for the
+     * response's Status-Code.
+     *
+     * @return string|null Reason phrase, or null if unknown.
+     */
+    public function getStatusReasonPhrase();
+
+    /**
+     * Returns response Http version.
      *
      * @return string
      */
     public function getVersion();
 
     /**
-     * Reset the body stream
+     * Reset the body stream.
      *
      * @return void
      */
