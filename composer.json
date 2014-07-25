@@ -1,21 +1,45 @@
 {
-    "name": "techdivision/servlet",
-    "description": "Servlet package default implementation.",
-    "homepage": "https://github.com/techdivision/TechDivision_Servlet",
-    "license": ["OSL-3.0"],
-    "require": {
-        "php": ">=5.4.0",
-        "techdivision/httpmessage": "0.1.*",
-        "techdivision/http": "0.1.*"
-    },
-    "autoload": {
-        "psr-0": {
-            "TechDivision\\Servlet": ["src/", "tests/"]
+	"name" : "techdivision/servlet",
+	"description" : "Servlet package default implementation.",
+	"homepage" : "https://github.com/techdivision/TechDivision_Servlet",
+	"license" : "OSL-3.0",
+    "keywords" : [
+        "php",
+        "interface",
+        "servlet"
+    ],
+    "authors" : [{
+            "name" : "Tim Wagner",
+            "email" : "tw@techdivision.com",
+            "homepage" : "http://www.techdivision.com",
+            "role" : "Developer"
         }
-    },
-    "config":{
-        "github-oauth":{
-            "github.com":"604a3b5943228e434a5b52c2ba3cf72286d30db9"
-        }
+    ],
+	"require" : {
+		"php" : ">=5.4.0",
+		"techdivision/httpmessage" : "0.1.*",
+		"techdivision/http" : "0.1.*"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "3.7.*",
+		"appserver-io/build" : "0.1.*"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"TechDivision\\Servlet" : [
+				"src/",
+				"tests/"
+			]
+		}
+	},
+	"config" : {
+		"github-oauth" : {
+			"github.com" : "604a3b5943228e434a5b52c2ba3cf72286d30db9"
+		}
+	},
+    "support" : {
+        "email" : "t.wagner@techdivision.com",
+        "issues" : "https://github.com/techdivision/TechDivision_Servlet/issues",
+        "source" : "https://github.com/techdivision/TechDivision_Servlet"
     }
 }
