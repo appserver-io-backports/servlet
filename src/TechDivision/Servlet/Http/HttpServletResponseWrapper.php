@@ -214,4 +214,16 @@ class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpS
     {
         return $this->getResponse()->resetBodyStream();
     }
+
+    /**
+     * Sets the HTTP response status code.
+     *
+     * @param integer $code The HTTP status code to set
+     *
+     * @return void
+     */
+    public function setStatusCode($code)
+    {
+        $this->getResponse()->setStatusCode($code);
+    }
 }
