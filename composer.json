@@ -3,20 +3,21 @@
 	"description" : "Servlet package default implementation.",
 	"homepage" : "https://github.com/techdivision/TechDivision_Servlet",
 	"license" : "OSL-3.0",
-    "keywords" : [
-        "php",
-        "interface",
-        "servlet"
-    ],
-    "authors" : [{
-            "name" : "Tim Wagner",
-            "email" : "tw@techdivision.com",
-            "homepage" : "http://www.techdivision.com",
-            "role" : "Developer"
-        }
-    ],
+	"keywords" : [
+		"php",
+		"interface",
+		"servlet"
+	],
+	"authors" : [{
+			"name" : "Tim Wagner",
+			"email" : "tw@techdivision.com",
+			"homepage" : "http://www.techdivision.com",
+			"role" : "Developer"
+		}
+	],
 	"require" : {
 		"php" : ">=5.4.0",
+		"techdivision/application" : ">=0.2",
 		"techdivision/httpmessage" : "0.1.*",
 		"techdivision/http" : "0.1.*"
 	},
@@ -37,9 +38,9 @@
 			"github.com" : "604a3b5943228e434a5b52c2ba3cf72286d30db9"
 		}
 	},
-    "support" : {
-        "email" : "t.wagner@techdivision.com",
-        "issues" : "https://github.com/techdivision/TechDivision_Servlet/issues",
-        "source" : "https://github.com/techdivision/TechDivision_Servlet"
-    }
+	"support" : {
+		"email" : "t.wagner@techdivision.com",
+		"issues" : "https://github.com/techdivision/TechDivision_Servlet/issues",
+		"source" : "https://github.com/techdivision/TechDivision_Servlet"
+	}
 }

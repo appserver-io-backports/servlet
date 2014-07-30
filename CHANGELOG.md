@@ -1,3 +1,14 @@
+# Version 0.6.2
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Add HttpServletResponse::setStatusCode() method to interface
+* Add composer dependency in techdivision/application package
+
 # Version 0.6.1
 
 ## Bugfixes

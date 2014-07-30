@@ -154,4 +154,13 @@ interface HttpServletResponse extends ServletResponse, ResponseInterface
      * @return void
      */
     public function resetBodyStream();
+
+    /**
+     * Sets the HTTP response status code.
+     *
+     * @param integer $code The HTTP status code to set
+     *
+     * @return void
+     */
+    public function setStatusCode($code);
 }
