@@ -45,7 +45,7 @@ interface ServletContext extends ManagerInterface
      *
      * @var string
      */
-    const IDENTIFIER = ServletContext::class;
+    const IDENTIFIER = 'TechDivision\Servlet\ServletContext';
 
     /**
      * Return's all servlets

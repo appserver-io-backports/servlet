@@ -3,5 +3,7 @@
 /.buildpath
 /.idea
 /target
-build.properties
+/build.properties
 /vendor/
+/composer.lock
+/composer.phar

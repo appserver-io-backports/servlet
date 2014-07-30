@@ -1,3 +1,14 @@
+# Version 0.6.3
+
+## Bugfixes
+
+* Replace PHP 5.4 incompatible ServletContext::class usage in ServletContext
+* Remove compser.lock/composer.lock from tracking
+
+## Features
+
+* None
+
 # Version 0.6.2
 
 ## Bugfixes
