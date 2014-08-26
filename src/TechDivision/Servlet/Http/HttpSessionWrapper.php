@@ -22,9 +22,6 @@
 
 namespace TechDivision\Servlet\Http;
 
-use TechDivision\Http\HttpCookie;
-use TechDivision\Servlet\SessionUtils;
-use TechDivision\Servlet\ServletSession;
 use TechDivision\Servlet\ServletSessionWrapper;
 
 /**
@@ -42,112 +39,15 @@ class HttpSessionWrapper extends ServletSessionWrapper implements HttpSession
 {
 
     /**
-     * The request instance we're working on.
+     * Injects the passed HTTP session instance into this servlet session wrapper.
      *
-     * @var \TechDivision\Servlet\Http\HttpServletRequest
-     */
-    protected $request;
-
-    /**
-     * Injects the request instance.
-     *
-     * @param \TechDivision\Servlet\Http\HttpServletRequest $request The request instance we're working on
+     * @param \TechDivision\Servlet\Http\HttpSession $session The session instance used for initialization
      *
      * @return void
      */
-    public function injectRequest(HttpServletRequest $request)
+    public function injectHttpSession(HttpSession $session)
     {
-        $this->request = $request;
-    }
-
-    /**
-     * Returns the request instance we're working on.
-     *
-     * @return \TechDivision\Servlet\Http\HttpServletRequest
-     */
-    public function getRequest()
-    {
-        return $this->request;
-    }
-
-    /**
-     * Returns the response instance we're working on.
-     *
-     * @return \TechDivision\Servlet\Http\HttpServletResponse
-     */
-    public function getResponse()
-    {
-        return $this->request->getResponse();
-    }
-
-    /**
-     * Creates and returns the session cookie to be added to the response.
-     *
-     * @return void
-     */
-    public function start()
-    {
-
-        // we need the session to be started
-        if ($this->isStarted()) {
-            return;
-        }
-
-        // create a new cookie with the session values
-        $cookie = new HttpCookie(
-            $this->getName(),
-            $this->getId(),
-            $this->getLifetime(),
-            $this->getMaximumAge(),
-            $this->getDomain(),
-            $this->getPath(),
-            $this->isSecure(),
-            $this->isHttpOnly()
-        );
-
-        // start the session and set the started flag
-        $this->getSession()->start();
-
-        // add the cookie to the response
-        $this->getRequest()->setRequestedSessionId($this->getId());
-        $this->getResponse()->addCookie($cookie);
-    }
-
-    /**
-     * Explicitly destroys all session data and adds a cookie to the
-     * response that invalidates the session in the browser.
-     *
-     * @param string $reason The reason why the session has been destroyed
-     *
-     * @return void
-     */
-    public function destroy($reason)
-    {
-
-        // check if the session has already been destroyed
-        if ($this->getId() != null) {
-
-            // create a new cookie with the session values
-            $cookie = new HttpCookie(
-                $this->getName(),
-                $this->getId(),
-                $this->getLifetime(),
-                $this->getMaximumAge(),
-                $this->getDomain(),
-                $this->getPath(),
-                $this->isSecure(),
-                $this->isHttpOnly()
-            );
-
-            // let the cookie expire
-            $cookie->expire();
-
-            // and add it to the response
-            $this->getResponse()->addCookie($cookie);
-        }
-
-        // destroy the sessions data
-        parent::destroy($reason);
+        $this->injectSession($session);
     }
 
     /**
@@ -159,34 +59,7 @@ class HttpSessionWrapper extends ServletSessionWrapper implements HttpSession
      */
     public function renewId()
     {
-
-        // create a new session ID
-        $this->setId(SessionUtils::generateRandomString());
-
-        // load the session manager
-        $sessionManager = $this->getRequest()->getContext()->getSessionManager();
-
-        // attach this session with the new ID
-        $sessionManager->attach($this->getSession());
-
-        // create a new cookie with the session values
-        $cookie = new HttpCookie(
-            $this->getName(),
-            $this->getId(),
-            $this->getLifetime(),
-            $this->getMaximumAge(),
-            $this->getDomain(),
-            $this->getPath(),
-            $this->isSecure(),
-            $this->isHttpOnly()
-        );
-
-        // add the cookie to the response
-        $this->getRequest()->setRequestedSessionId($this->getId());
-        $this->getResponse()->addCookie($cookie);
-
-        // return the new session ID
-        return $this->getId();
+        return $this->getSession()->renewId();
     }
 
     /**
@@ -199,7 +72,7 @@ class HttpSessionWrapper extends ServletSessionWrapper implements HttpSession
      */
     public function shutdownObject()
     {
-        throw new \Exception(__METHOD__ . ' not implemented yet');
+        $this->getSession()->shutdownObject();
     }
 
     /**
@@ -209,6 +82,6 @@ class HttpSessionWrapper extends ServletSessionWrapper implements HttpSession
      */
     public function close()
     {
-        throw new \Exception(__METHOD__ . ' not implemented yet');
+        $this->getSession()->close();
     }
 }

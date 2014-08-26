@@ -1,3 +1,13 @@
+# Version 0.6.4
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Replace HttpSessionWrapper with simple wrapper implementation => move original implementation to TechDivision_ServletEngine
+
 # Version 0.6.3
 
 ## Bugfixes
